@@ -6,5 +6,6 @@ public record CouponDTO(
             String code,
             String description,
             Double discountValue,
-            LocalDateTime expirationDate
+            LocalDateTime expirationDate,
+            boolean published
             ){}
