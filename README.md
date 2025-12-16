@@ -1,4 +1,5 @@
 #Stack 
+
  - Java 21
  - Spring 3.5.8
  - H2
@@ -6,17 +7,19 @@
  - Maven
 
 #Config Database
-spring.datasource.url=jdbc:h2:mem:coupondb
-spring.datasource.username=sa
-spring.datasource.password=
 
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
+- spring.datasource.url=jdbc:h2:mem:coupondb
+- spring.datasource.username=sa
+- spring.datasource.password=
 
-spring.jpa.generate-ddl=true
-spring.jpa.show-sql=true
+- spring.h2.console.enabled=true
+- spring.h2.console.path=/h2-console
+
+- spring.jpa.generate-ddl=true
+- spring.jpa.show-sql=true
 
 #Test Json
+
 {
     "code": "ABA-123",
     "description": "coupon test.",
