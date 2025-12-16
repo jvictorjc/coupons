@@ -8,7 +8,6 @@ import com.outforce.coupon.repository.CouponRepository;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
