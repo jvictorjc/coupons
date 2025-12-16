@@ -1,11 +1,11 @@
 package com.outforce.coupon.coupondto;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public record CouponDTO(
             String code,
             String description,
             Double discountValue,
-            LocalDateTime expirationDate,
+            OffsetDateTime expirationDate,
             boolean published
             ){}

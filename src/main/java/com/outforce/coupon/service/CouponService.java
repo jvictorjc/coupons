@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 import com.outforce.coupon.repository.CouponRepository;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class CouponService {
 
+    private static final String BASE62 = "[^a-zA-Z0-9]";
     private static final Double MIN_DISCOUNT_VALUE = 0.50;
 
     private final CouponRepository couponRepository;
@@ -57,12 +59,14 @@ public class CouponService {
             throw new RuntimeException("Coupon discount value should be greater than 0,5");
         }
 
-        if(couponDTO.expirationDate().isBefore(LocalDateTime.now())){
+        if(couponDTO.expirationDate().isBefore(OffsetDateTime.now())){
             throw new RuntimeException("Coupon expiration date should be before now");
         }
     }
 
     private String clearCode(String code) {
-        return code.toUpperCase();
+        return code.replaceAll(BASE62, "")
+                .substring(0, Math.min(6, code.length()))
+                .toUpperCase();
     }
 }
