@@ -1,4 +1,4 @@
-package entities;
+package com.outforce.coupon.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

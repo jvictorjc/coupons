@@ -1,4 +1,4 @@
-package controller;
+package com.outforce.coupon.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
