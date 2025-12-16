@@ -8,12 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/coupons")
 @RequiredArgsConstructor
 public class CouponController {
 
     private final CouponService couponService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Coupon> getCoupon(@PathVariable Long id){
+        Coupon coupon = couponService.getCoupon(id);
+        return ResponseEntity.ok(coupon);
+    }
 
     @PostMapping
     public ResponseEntity<Coupon> addCoupon(@RequestBody CouponDTO couponDTO) {

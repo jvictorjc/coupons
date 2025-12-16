@@ -8,6 +8,7 @@ import com.outforce.coupon.repository.CouponRepository;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -52,15 +53,19 @@ public class CouponService {
     public void validateCoupon(CouponDTO couponDTO, String code) {
 
         if(code.length() != 6){
-            throw new RuntimeException("Coupon code length should be 6 characters");
+            throw new IllegalArgumentException("Coupon code length should be 6 characters");
         }
 
         if(couponDTO.discountValue() < MIN_DISCOUNT_VALUE){
-            throw new RuntimeException("Coupon discount value should be greater than 0,5");
+            throw new IllegalArgumentException("Coupon discount value should be greater than 0,5");
         }
 
         if(couponDTO.expirationDate().isBefore(OffsetDateTime.now())){
-            throw new RuntimeException("Coupon expiration date should be before now");
+            throw new IllegalArgumentException("Coupon expiration date should be before now");
+        }
+
+        if (couponDTO.description() != null && couponDTO.description().length() > 255) {
+            throw new IllegalArgumentException("Description must be at most 255 characters");
         }
     }
 
@@ -68,5 +73,10 @@ public class CouponService {
         return code.replaceAll(BASE62, "")
                 .substring(0, Math.min(6, code.length()))
                 .toUpperCase();
+    }
+
+    public Coupon getCoupon(Long id) {
+        return couponRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Coupon not found"));
     }
 }
