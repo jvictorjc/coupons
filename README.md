@@ -8,15 +8,19 @@
 
 #Config Database
 
-spring.datasource.url=jdbc:h2:mem:coupondb
-spring.datasource.username=sa
-spring.datasource.password=
+ spring.datasource.url=jdbc:h2:mem:coupondb
+ 
+ spring.datasource.username=sa
+ 
+ spring.datasource.password=
 
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
+ spring.h2.console.enabled=true
+ 
+ spring.h2.console.path=/h2-console
 
-spring.jpa.generate-ddl=true
-spring.jpa.show-sql=true
+ spring.jpa.generate-ddl=true
+ 
+ spring.jpa.show-sql=true
 
 #Test Json
 
