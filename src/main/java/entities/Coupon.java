@@ -23,6 +23,6 @@ public class Coupon {
     private String description;
     private Double discountValue;
     private LocalDateTime expirationDate;
-    private Boolean deleted;
+    private Boolean deleted = false;
 
 }
